@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-partial class SandboxPlayer : Player
+partial class BasicRPPlayer : Player
 {
 	private TimeSince timeSinceDropped;
 	private TimeSince timeSinceJumpReleased;
@@ -24,7 +24,7 @@ partial class SandboxPlayer : Player
 	/// <summary>
 	/// Default init
 	/// </summary>
-	public SandboxPlayer()
+	public BasicRPPlayer()
 	{
 		Inventory = new Inventory( this );
 	}
@@ -32,7 +32,7 @@ partial class SandboxPlayer : Player
 	/// <summary>
 	/// Initialize using this client
 	/// </summary>
-	public SandboxPlayer( Client cl ) : this()
+	public BasicRPPlayer( Client cl ) : this()
 	{
 		// Load clothing from client data
 		Clothing.LoadFromClient( cl );

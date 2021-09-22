@@ -1,9 +1,9 @@
 ﻿using Sandbox;
 
-[Library( "sandbox", Title = "Sandbox" )]
-partial class SandboxGame : Game
+[Library( "roleplay", Title = "BasicRP" )]
+partial class BasicRPGame : Game
 {
-	public SandboxGame()
+	public BasicRPGame()
 	{
 		if ( IsServer )
 		{
@@ -15,7 +15,7 @@ partial class SandboxGame : Game
 	public override void ClientJoined( Client cl )
 	{
 		base.ClientJoined( cl );
-		var player = new SandboxPlayer( cl );
+		var player = new BasicRPPlayer( cl );
 		player.Respawn();
 
 		cl.Pawn = player;

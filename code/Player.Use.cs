@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-partial class SandboxPlayer
+partial class BasicRPPlayer
 {
 	public bool IsUseDisabled()
 	{

@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-partial class SandboxPlayer
+partial class BasicRPPlayer
 {
 	[ClientRpc]
 	private void BecomeRagdollOnClient( Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone )

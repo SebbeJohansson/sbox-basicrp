@@ -168,7 +168,7 @@ public partial class CarEntity : Prop, IUse
 	{
 		base.OnDestroy();
 
-		if ( driver is SandboxPlayer player )
+		if ( driver is BasicRPPlayer player )
 		{
 			RemoveDriver( player );
 		}
@@ -182,7 +182,7 @@ public partial class CarEntity : Prop, IUse
 	[Event.Tick.Server]
 	protected void Tick()
 	{
-		if ( driver is SandboxPlayer player )
+		if ( driver is BasicRPPlayer player )
 		{
 			if ( player.LifeState != LifeState.Alive || player.Vehicle != this )
 			{
@@ -202,7 +202,7 @@ public partial class CarEntity : Prop, IUse
 
 			if ( Input.Pressed( InputButton.Use ) )
 			{
-				if ( owner.Pawn is SandboxPlayer player && !player.IsUseDisabled() )
+				if ( owner.Pawn is BasicRPPlayer player && !player.IsUseDisabled() )
 				{
 					RemoveDriver( player );
 
@@ -447,7 +447,7 @@ public partial class CarEntity : Prop, IUse
 		wheel3.LocalRotation = wheelRotBackLeft;
 	}
 
-	private void RemoveDriver( SandboxPlayer player )
+	private void RemoveDriver( BasicRPPlayer player )
 	{
 		driver = null;
 		timeSinceDriverLeft = 0;
@@ -472,7 +472,7 @@ public partial class CarEntity : Prop, IUse
 
 	public bool OnUse( Entity user )
 	{
-		if ( user is SandboxPlayer player && player.Vehicle == null && timeSinceDriverLeft > 1.0f )
+		if ( user is BasicRPPlayer player && player.Vehicle == null && timeSinceDriverLeft > 1.0f )
 		{
 			player.Vehicle = this;
 			player.VehicleController = new CarController();
@@ -510,7 +510,7 @@ public partial class CarEntity : Prop, IUse
 		if ( !body.IsValid() )
 			return;
 
-		if ( other is SandboxPlayer player && player.Vehicle == null )
+		if ( other is BasicRPPlayer player && player.Vehicle == null )
 		{
 			var speed = body.Velocity.Length;
 			var forceOrigin = Position + Rotation.Down * Rand.Float( 20, 30 );
@@ -535,7 +535,7 @@ public partial class CarEntity : Prop, IUse
 		if ( !IsServer )
 			return;
 
-		if ( eventData.Entity is SandboxPlayer player && player.Vehicle != null )
+		if ( eventData.Entity is BasicRPPlayer player && player.Vehicle != null )
 		{
 			return;
 		}
@@ -562,7 +562,7 @@ public partial class CarEntity : Prop, IUse
 					.WithPosition( eventData.Pos )
 					.WithForce( eventData.PreVelocity ) );
 
-				if ( eventData.Entity.LifeState == LifeState.Dead && eventData.Entity is not SandboxPlayer )
+				if ( eventData.Entity.LifeState == LifeState.Dead && eventData.Entity is not BasicRPPlayer )
 				{
 					PhysicsBody.Velocity = eventData.PreVelocity;
 					PhysicsBody.AngularVelocity = eventData.PreAngularVelocity;
