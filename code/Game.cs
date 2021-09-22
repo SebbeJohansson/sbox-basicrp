@@ -12,11 +12,24 @@ partial class BasicRPGame : Game
 		}
 	}
 
+	[Event.Hotload]
+	public void HudReload(){
+		if ( this.IsServer )
+		{
+			// Create the HUD
+			_ = new SandboxHud();
+			Log.Info("Hotreloaded hud");
+		}
+	}
+
 	public override void ClientJoined( Client cl )
 	{
 		base.ClientJoined( cl );
 		var player = new BasicRPPlayer( cl );
 		player.Respawn();
+		player.MoneyInit();
+
+		player.DisplayName = cl.Name;
 
 		cl.Pawn = player;
 	}

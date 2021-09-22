@@ -1,0 +1,61 @@
+LowerLeftHud
+{
+  position: absolute;
+  left: 48px;
+  bottom: 48px;
+  margin: 0;
+
+  .player-stats{
+    position: relative;
+    flex-direction: column;
+    background-color: rgba( black, 0.5 );
+    width: 155px;
+    padding: 16px;
+  }
+
+  .stat-bar{
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(17, 17, 17, 0.589);
+    margin-top: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .inner-health, .inner-armor{
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .inner-health{
+    background-color: red;
+  }
+  .inner-armor{
+    background-color: blue;
+    justify-self: flex-start;
+    align-self: flex-start;
+  }
+
+  .health, .armor{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    padding: 0 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .top-bar{
+    flex-direction: column;
+  }
+
+  .name, .money{
+    font-size: 25px;
+    font-weight: 400;
+    color: white;
+  }
+}

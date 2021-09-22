@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class InventoryBar : Panel
 {
 	readonly List<InventoryIcon> slots = new();
+	bool isActive = false; 
 
 	public InventoryBar()
 	{
@@ -71,7 +72,7 @@ public class InventoryBar : Panel
 		if ( input.MouseWheel != 0 ) SwitchActiveSlot( input, inventory, -input.MouseWheel );
 	}
 
-	private static void SetActiveSlot( InputBuilder input, IBaseInventory inventory, int i )
+	private void SetActiveSlot( InputBuilder input, IBaseInventory inventory, int i )
 	{
 		var player = Local.Pawn;
 		if ( player == null )
@@ -85,9 +86,11 @@ public class InventoryBar : Panel
 			return;
 
 		input.ActiveChild = ent;
+
+		SetInventoryBarActive();
 	}
 
-	private static void SwitchActiveSlot( InputBuilder input, IBaseInventory inventory, int idelta )
+	private void SwitchActiveSlot( InputBuilder input, IBaseInventory inventory, int idelta )
 	{
 		var count = inventory.Count();
 		if ( count == 0 ) return;
@@ -100,4 +103,22 @@ public class InventoryBar : Panel
 
 		SetActiveSlot( input, inventory, nextSlot );
 	}
+
+	private void SetInventoryBarActive(){
+		if (isActive) return;
+
+		this.SetClass("active", true);
+		isActive = true;
+		SetInventoryBarInactive();
+		
+	}
+
+	private async void SetInventoryBarInactive(){
+		Log.Info("start inventory bar inactive");
+    await Task.Delay(2000);
+		this.RemoveClass("active");
+		isActive = false;
+		Log.Info("finished inventory bar inactive");
+	}
+
 }

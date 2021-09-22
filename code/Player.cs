@@ -21,6 +21,9 @@ partial class BasicRPPlayer : Player
 	/// </summary>
 	public Clothing.Container Clothing = new();
 
+	[Net]
+	public string DisplayName { get; set; }
+
 	/// <summary>
 	/// Default init
 	/// </summary>
@@ -42,6 +45,8 @@ partial class BasicRPPlayer : Player
 	{
 		MainCamera = new FirstPersonCamera();
 		LastCamera = MainCamera;
+
+		ArmorInit();
 
 		base.Spawn();
 	}
@@ -73,6 +78,8 @@ partial class BasicRPPlayer : Player
 		Inventory.Add( new Tool() );
 		Inventory.Add( new Pistol() );
 		Inventory.Add( new Flashlight() );
+
+		ArmorInit();
 
 		base.Respawn();
 	}
@@ -114,6 +121,22 @@ partial class BasicRPPlayer : Player
 		}
 
 		lastDamage = info;
+
+		// if we have armor
+		if (Armor > 0) {
+			// Damage is greater than armor
+			if (info.Damage > Armor) {
+				// Remove armor amount for damage taken
+				info.Damage -= Armor;
+				// Set armor to depleted
+				Armor = 0;
+			} else {
+				// Remove damage from armor
+				Armor -= info.Damage;
+				// Set damage to 0;
+				info.Damage = 0;
+			}
+		}
 
 		TookDamage( lastDamage.Flags, lastDamage.Position, lastDamage.Force );
 
