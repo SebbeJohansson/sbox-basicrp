@@ -31,7 +31,6 @@ public class LowerLeftHud : Panel
     InnerArmor.Style.Set("width", $"{player.Armor.CeilToInt()}%");
 
 		Name = player.DisplayName;
-		Log.Info(player.Money);
 		Money = $"{player.Money}$";
 
 

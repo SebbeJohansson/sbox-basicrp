@@ -34,14 +34,26 @@ partial class BasicRPGame : Game
 	{
 		base.ClientJoined( cl );
 		var player = new BasicRPPlayer( cl );
-		player.Respawn();
-		player.MoneyInit();
 
 		player.dbCon = dbCon;
+		
+		player.InitiatePlayer();
+
 		// cl.Name is always empty on client side. So a new networked value to fix that.
 		player.DisplayName = cl.Name;
 
 		cl.Pawn = player;
+	}
+
+	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
+	{
+
+		var player = cl.Pawn as BasicRPPlayer;
+
+		player.SavePlayer();
+		
+		base.ClientDisconnect( cl, reason );
+
 	}
 
 	protected override void OnDestroy()
