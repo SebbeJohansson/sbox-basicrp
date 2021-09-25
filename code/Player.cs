@@ -24,6 +24,9 @@ partial class BasicRPPlayer : Player
 	[Net]
 	public string DisplayName { get; set; }
 
+	[Net]
+	public ulong SteamId { get; set; }
+
 	/// <summary>
 	/// Default init
 	/// </summary>
@@ -39,6 +42,8 @@ partial class BasicRPPlayer : Player
 	{
 		// Load clothing from client data
 		Clothing.LoadFromClient( cl );
+
+		SteamId = cl.SteamId;
 	}
 
 	public override void Spawn()

@@ -1,14 +1,22 @@
 ﻿using Sandbox;
+using System.Collections.Generic;
+
+using Vrtx.Database;
 
 [Library( "roleplay", Title = "BasicRP" )]
 partial class BasicRPGame : Game
 {
+
+	Connector dbCon;
+
 	public BasicRPGame()
 	{
 		if ( IsServer )
 		{
 			// Create the HUD
 			_ = new SandboxHud();
+
+			dbCon = new Connector(Connector.ConnectorType.FlatFiles);
 		}
 	}
 
@@ -29,6 +37,8 @@ partial class BasicRPGame : Game
 		player.Respawn();
 		player.MoneyInit();
 
+		player.dbCon = dbCon;
+		// cl.Name is always empty on client side. So a new networked value to fix that.
 		player.DisplayName = cl.Name;
 
 		cl.Pawn = player;
