@@ -9,6 +9,7 @@ public class LowerLeftHud : Panel
 	public string Armor {get; set;}
 	public string Money {get; set;}
 	public string Name {get; set;}
+	public string Job {get; set;}
 
   
 	public Panel InnerHealth { get; set; }
@@ -32,6 +33,7 @@ public class LowerLeftHud : Panel
 
 		Name = player.DisplayName;
 		Money = $"{player.Money}$";
+		Job = $"{player.Job.Name} - {player.Job.Salary}$";
 
 
 

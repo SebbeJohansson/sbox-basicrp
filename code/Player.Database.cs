@@ -39,13 +39,10 @@ partial class BasicRPPlayer
       }
 
       Respawn();
-      SalaryInit();
+      JobInit();
 
       TimeUntilSave = 5.0f;
       CheckSavingPlayer();
-
-
-      Log.Info("Starts timer loop for salary");
 
     });
   }

@@ -1,24 +1,31 @@
 using Sandbox;
 using System;
+using Jobs;
 partial class BasicRPPlayer
 {
 	[Net]
-	public int Salary { get; set; }
+	public Job Job { get; set; }
 
   RealTimeUntil TimeUntilSalary;
 
-	public void SalaryInit() {
+	public void  JobInit() {
     if (IsClient) return;
-		Salary = 60;
+    if ( Game.Current is not BasicRPGame game ) return;
+
+    JobData data = (JobData)game?.jobHandler.GetRandomJob();
+    Job = new();
+    Job.Name = data.Name;
+    Job.Salary = data.Salary;
     TimeUntilSalary = 120.0f;
     CheckToGiveSalary();
 	}
 
   [Event( "server.tick" )]
   private void CheckToGiveSalary(){
+    if (IsClient) return;
     // TimeUntil has passed so lets give salary and recharge salary timer.
     if(TimeUntilSalary < 0){
-      Money += Salary;
+      Money += Job.Salary;
       TimeUntilSalary = 120.0f;
     }
   }

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Citizen",
+    "salary": 500,
+    "defaultJob": true
+  },
+  {
+    "name": "Citizen",
+    "salary": 500
+  },
+  {
+    "name": "Citizen",
+    "salary": 500
+  },
+  {
+    "name": "Citizen",
+    "salary": 500
+  }
+]

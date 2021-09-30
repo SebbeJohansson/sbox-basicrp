@@ -9,7 +9,6 @@ LowerLeftHud
     position: relative;
     flex-direction: column;
     background-color: rgba( black, 0.5 );
-    width: 155px;
     padding: 16px;
   }
 
@@ -34,7 +33,6 @@ LowerLeftHud
   }
   .inner-armor{
     background-color: blue;
-    justify-self: flex-start;
     align-self: flex-start;
   }
 
@@ -53,7 +51,7 @@ LowerLeftHud
     flex-direction: column;
   }
 
-  .name, .money{
+  .text{
     font-size: 25px;
     font-weight: 400;
     color: white;

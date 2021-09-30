@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 
 using Vrtx.Database;
+using Jobs;
 
 [Library( "roleplay", Title = "BasicRP" )]
 partial class BasicRPGame : Game
 {
 
 	Connector dbCon;
+	[Net]
+	public JobHandler jobHandler {set; get;}
 
 	public BasicRPGame()
 	{
@@ -17,6 +20,8 @@ partial class BasicRPGame : Game
 			_ = new SandboxHud();
 
 			dbCon = new Connector(Connector.ConnectorType.FlatFiles);
+			jobHandler = new();
+
 		}
 	}
 
