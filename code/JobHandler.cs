@@ -23,7 +23,8 @@ namespace Jobs {
   }
   public partial class JobHandler : BaseNetworkable {
 
-    JobData[] AvailableJobs {get;set;}
+    [Net]
+    public JobData[] AvailableJobs {get;set;}
 
     public JobHandler() {
 

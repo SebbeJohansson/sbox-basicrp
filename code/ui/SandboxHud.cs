@@ -19,7 +19,7 @@ public partial class SandboxHud : HudEntity<RootPanel>
 		RootPanel.AddChild<Scoreboard<ScoreboardEntry>>();
 		RootPanel.AddChild<InventoryBar>();
 		RootPanel.AddChild<CurrentTool>();
-		RootPanel.AddChild<SpawnMenu>();
+		RootPanel.AddChild<RoleplayMenu>().SetTemplate("/ui/RoleplayMenu.html");
 		RootPanel.AddChild<LowerLeftHud>().SetTemplate("/ui/LowerLeftHud.html");
 	}
 }

@@ -25,6 +25,7 @@ partial class BasicRPGame : Game
 		}
 	}
 
+	/*
 	[Event.Hotload]
 	public void HudReload(){
 		if ( this.IsServer )
@@ -34,6 +35,7 @@ partial class BasicRPGame : Game
 			Log.Info("Hotreloaded hud");
 		}
 	}
+	*/
 
 	public override void ClientJoined( Client cl )
 	{

@@ -21,6 +21,9 @@ namespace Vrtx.Database{
         case ConnectorType.FlatFiles: {
           break;
         }
+        case ConnectorType.FireBase: {
+          break;
+        }
         default: {
           Log.Error("No ConnectorType was specified in DatabaseConnector");
           break;
