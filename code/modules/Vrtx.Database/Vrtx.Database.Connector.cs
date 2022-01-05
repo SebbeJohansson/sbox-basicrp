@@ -17,6 +17,12 @@ namespace Vrtx.Database{
     public Connector(ConnectorType Type){
       SelectedConnector = Type;
 
+			Log.Info("Websocket started");
+			var ws = new WebSocket();
+			ws.Connect("ws://localhost:8999");
+			ws.Send("Hello World");
+			
+
       switch(Type) {
         case ConnectorType.FlatFiles: {
           break;

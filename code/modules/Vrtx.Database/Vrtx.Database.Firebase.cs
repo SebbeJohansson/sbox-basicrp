@@ -19,7 +19,7 @@ namespace Vrtx.Database{
 			_firebase_secret = secret;
 		}
 
-		public void Connect(){
+		/*public void Connect(){
 			if(_firebase_key == "" || _firebase_secret == ""){
 				throw new Exception("Firebase key or secret not set");
 			}
@@ -63,6 +63,6 @@ namespace Vrtx.Database{
 			string json = FileSystem.Data.ReadJson(url);
 			T data = JsonSerializer.Deserialize<T>(json);
 			return data;
-		}
+		}*/
   }
 }

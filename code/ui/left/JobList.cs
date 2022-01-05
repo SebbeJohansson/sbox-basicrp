@@ -13,7 +13,8 @@ public partial class JobList : Panel
     AddChild( out Canvas, "canvas" );
 
     Canvas.Layout.AutoColumns = true;
-    Canvas.Layout.ItemSize = new Vector2( 0, 100 );
+		Canvas.Layout.ItemHeight = 0;
+		Canvas.Layout.ItemWidth = 100;
 		Canvas.Style.Set("flex-direction: column; overflow: hidden; flex-grow: 1; overflow: scroll;");
     Canvas.OnCreateCell = ( cell, data ) =>
     {
@@ -21,10 +22,7 @@ public partial class JobList : Panel
       var panel = cell.Add.Panel( "icon" );
 			panel.Style.Set("width: 100%;");
       panel.AddEventListener( "onclick", () => ConsoleSystem.Run( "spawn", "models/" + file ) );
-      panel.Style.Background = new PanelBackground
-      {
-        Texture = Texture.Load( $"/models/{file}_c.png", false )
-      };
+			panel.Style.BackgroundImage = Texture.Load( $"/models/{file}_c.png", false );
     };
 
     JobData[] jobs = GetAvailableJobs();
